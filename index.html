@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lasting Company — Stories, ideas, and work worth keeping.</title>
+<meta name="description" content="The Lasting Company exists at the intersection of faith, leadership, and purpose. Through media, storytelling, and meaningful conversation, we create work worth keeping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-dark: #0F1B33;
+    --gold: #C9A84C;
+    --cream: #F5F0E8;
+    --cream-dark: #E8E0D2;
+    --muted: #8899B3;
+    --body-dark: #4A4A4A;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--body-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+  }
+
+  .hero-accent {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .hero-logo-img {
+    width: clamp(180px, 30vw, 280px);
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+    display: none;
+  }
+
+  .hero-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto;
+    opacity: 0;
+    animation: ruleExpand 1s ease 0.6s forwards;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+
+  .hero-body {
+    max-width: 640px;
+    font-size: 20px;
+    line-height: 1.9;
+    color: var(--body-dark);
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1s forwards;
+  }
+
+  .hero-quote {
+    max-width: 500px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.6;
+    margin: 40px auto;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards;
+  }
+
+  .hero-quote cite {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 12px;
+  }
+
+  .hero-measure {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-top: 50px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.4s forwards;
+  }
+
+  /* ─── PORTFOLIO ─── */
+  .portfolio {
+    padding: 80px 40px;
+    background: var(--navy-dark);
+    border-top: 1px solid var(--gold);
+  }
+
+  .portfolio-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .portfolio-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 50px;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .portfolio-card {
+    padding: 50px 30px;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.4s;
+    display: block;
+  }
+
+  .portfolio-card:hover {
+    border-color: var(--gold);
+    background: rgba(201, 168, 76, 0.03);
+  }
+
+  .portfolio-card-logo {
+    width: 160px;
+    height: auto;
+    margin: 0 auto 16px;
+    display: block;
+  }
+
+  .portfolio-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .portfolio-card-title span { color: var(--gold); }
+
+  .portfolio-card-desc {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 16px;
+  }
+
+  .portfolio-card-cta {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 50px 40px;
+    text-align: center;
+    background: var(--navy-dark);
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .footer-brand-logo {
+    width: 100px;
+    height: auto;
+    margin: 0 auto 16px;
+    display: block;
+    opacity: 0.5;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    margin-top: 30px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ruleExpand {
+    from { width: 0; opacity: 0; }
+    to { width: 60px; opacity: 1; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .hero { padding: 60px 24px; }
+    .portfolio { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-accent"></div>
+  <img src="lasting-co-gold.png" alt="The Lasting Company" class="hero-logo-img">
+  <div class="hero-logo">The Lasting Company</div>
+  <div class="hero-rule"></div>
+  <div class="hero-tagline">Stories, ideas, and work worth keeping.</div>
+
+  <div class="hero-body">
+    Most things fade. Titles change. Achievements are forgotten. But some things endure — the integrity a leader carried under pressure, the work done faithfully when no one was watching, the life built around what actually matters.
+  </div>
+
+  <div class="hero-body">
+    The Lasting Company exists at the intersection of faith, leadership, and purpose. Through media, storytelling, and meaningful conversation, we create work worth keeping.
+  </div>
+
+  <div class="hero-quote">
+    "Only one life, 'twill soon be past. Only what's done for Christ will last."
+    <cite>— C.T. Studd</cite>
+  </div>
+
+  <div class="hero-measure">We measure success differently here.</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio">
+  <div class="portfolio-inner">
+    <div class="portfolio-label">Our Flagship</div>
+    <div class="portfolio-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
+      <a href="https://survivedsuccess.com" class="portfolio-card" target="_blank">
+        <img src="ss-logo-light.png" alt="Survived Success" class="portfolio-card-logo">
+        <div class="portfolio-card-desc">A podcast for leaders who've built something significant — and are honest enough to talk about what it took. Hosted by Michael Karel.</div>
+        <div class="portfolio-card-cta">Listen →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="lasting-co-gold.png" alt="Lasting Co." class="footer-brand-logo">
+  <div class="footer-brand">The Lasting Company</div>
+  <div class="footer-links">
+    <a href="https://survivedsuccess.com">Survived Success</a>
+    <a href="https://www.linkedin.com/company/lastingco" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 The Lasting Company LLC. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
